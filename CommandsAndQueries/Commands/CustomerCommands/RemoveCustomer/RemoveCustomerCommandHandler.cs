@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Queries.Exceptions;
+using CommandsAndQueries.Exceptions;
 using Domain;
 using MediatR;
 using Services.Abstract;
 
-namespace Queries.ResumeCommands.RemoveResume
+namespace CommandsAndQueries.ResumeCommands.RemoveResume
 {
     public class RemoveCustomerCommandHandler : IRequestHandler<RemoveCustomerCommand>
     {

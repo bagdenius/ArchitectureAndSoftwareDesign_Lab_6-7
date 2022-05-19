@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Queries.ResumeCommands.RemoveResume
+namespace CommandsAndQueries.ResumeCommands.RemoveResume
 {
     public class RemoveCustomerCommand : IRequest
     {

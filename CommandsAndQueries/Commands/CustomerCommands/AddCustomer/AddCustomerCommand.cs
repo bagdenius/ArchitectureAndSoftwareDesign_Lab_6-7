@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Queries.ResumeCommands.CreateResume
+namespace CommandsAndQueries.ResumeCommands.CreateResume
 {
-    public class CreateCustomerCommand : IRequest<Guid>
+    public class AddCustomerCommand : IRequest<Guid>
     {
         public Guid RoomId { get; set; }
         public string Name { get; set; }

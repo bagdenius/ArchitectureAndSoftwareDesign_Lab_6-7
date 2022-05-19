@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using ViewModels;
 
-namespace Queries.ResumeQueries.GetResume
+namespace CommandsAndQueries.ResumeQueries.GetResume
 {
-    public class GetCustomerQuery : IRequest<ResumeVM>
+    public class GetCustomerQuery : IRequest<CustomerVM>
     {
         public Guid Id { get; set; }
     }

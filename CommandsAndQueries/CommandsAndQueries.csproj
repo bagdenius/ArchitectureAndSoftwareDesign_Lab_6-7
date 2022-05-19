@@ -7,19 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\HotelCommands\AddHotel\" />
-    <Folder Include="Commands\HotelCommands\UpdateHotel\" />
-    <Folder Include="Commands\HotelCommands\RemoveHotel\" />
-    <Folder Include="Commands\RoomCommands\AddRoom\" />
-    <Folder Include="Commands\RoomCommands\UpdateRoom\" />
-    <Folder Include="Commands\RoomCommands\RemoveRoom\" />
-    <Folder Include="Queries\HotelQueries\GetHotel\" />
-    <Folder Include="Queries\HotelQueries\GetHotelList\" />
-    <Folder Include="Queries\RoomQueries\GetRoom\" />
-    <Folder Include="Queries\RoomQueries\GetRoomList\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>

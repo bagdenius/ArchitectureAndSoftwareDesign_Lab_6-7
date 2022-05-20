@@ -14,7 +14,7 @@ namespace CommandsAndQueries.ResumeCommands.UpdateResume
         public async Task<Unit> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
             var customer = await _unitOfWork.Customers.GetAsync(request.Id, cancellationToken);
-            if (customer == null || customer.Id != request.Id)
+            if (customer == null)
                 throw new NotFoundException(nameof(Customer), request.Id);
             customer.Id = request.Id;
             customer.RoomId = request.RoomId;

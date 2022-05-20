@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Entities
+﻿namespace Entities
 {
     public class Customer
     {
-        // Mapped properties
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

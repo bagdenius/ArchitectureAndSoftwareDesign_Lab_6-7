@@ -14,13 +14,12 @@ namespace CommandsAndQueries.Commands.HotelCommands.UpdateHotel
         public async Task<Unit> Handle(UpdateHotelCommand request, CancellationToken cancellationToken)
         {
             var hotel = await _unitOfWork.Hotels.GetAsync(request.Id, cancellationToken);
-            if (hotel == null || hotel.Id != request.Id)
+            if (hotel == null)
                 throw new NotFoundException(nameof(Hotel), request.Id);
             hotel.Id = request.Id;
             hotel.Name = request.Name;
             hotel.Stars = request.Stars;
             hotel.NumberOfFloors = request.NumberOfFloors;
-            hotel.NumberOfRooms = request.NumberOfRooms;
             hotel.Address = request.Address;
             hotel.Phone = request.Phone;
             await _unitOfWork.SaveAsync(cancellationToken);

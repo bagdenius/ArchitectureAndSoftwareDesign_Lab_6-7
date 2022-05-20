@@ -13,5 +13,7 @@ namespace CommandsAndQueries.ResumeCommands.CreateResume
         public DateTime? BirthDate { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public DateTime BookingStartDate { get; set; }
+        public DateTime BookingEndDate { get; set; }
     }
 }

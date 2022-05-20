@@ -1,11 +1,12 @@
 ﻿using Autofac;
 using Database;
 
-namespace ModulesDAL
+namespace Database
 {
     public class DatabaseModule : Module
     {
         protected override void Load(ContainerBuilder builder) =>
-            builder.RegisterType<DatabaseContext>().AsSelf().SingleInstance();
+            builder.RegisterType<DatabaseContext>().
+            WithParameter("options", DbContextOptionsFactory.Get()).AsSelf().SingleInstance();
     }
 }

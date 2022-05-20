@@ -18,7 +18,7 @@ namespace CommandsAndQueries.Commands.HotelCommands.AddHotel
                 Name = request.Name,
                 Stars = request.Stars,
                 NumberOfFloors = request.NumberOfFloors,
-                NumberOfRooms = request.NumberOfRooms,
+                NumberOfRooms = 0,
                 Address = request.Address,
                 Phone = request.Phone
             };

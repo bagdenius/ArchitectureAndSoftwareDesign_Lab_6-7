@@ -6,8 +6,9 @@ namespace Database
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext()
-        { 
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
+            : base(options)
+        {
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
@@ -22,8 +23,5 @@ namespace Database
             builder.ApplyConfiguration(new RoomConfiguration());
             base.OnModelCreating(builder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => 
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=HotelManagementDb");
     }
 }

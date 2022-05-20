@@ -14,7 +14,7 @@ namespace CommandsAndQueries.Commands.HotelCommands.RemoveHotel
         public async Task<Unit> Handle(RemoveHotelCommand request, CancellationToken cancellationToken)
         {
             var hotel = await _unitOfWork.Hotels.GetAsync(request.Id, cancellationToken);
-            if (hotel == null || hotel.Id != request.Id)
+            if (hotel == null)
                 throw new NotFoundException(nameof(Hotel), request.Id);
             _unitOfWork.Hotels.Remove(hotel);
             await _unitOfWork.SaveAsync(cancellationToken);

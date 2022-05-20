@@ -2,7 +2,7 @@
 using UnitOfWOrk;
 using UnitOfWOrk.Abstract;
 
-namespace ModulesDAL
+namespace Database
 {
     public class UnitOfWorkModule : Module
     {

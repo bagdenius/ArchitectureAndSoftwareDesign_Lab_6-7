@@ -1,7 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using MediatR.Extensions.Autofac.DependencyInjection;
-using ModulesBLL;
 using UI.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
     containerBuilder.RegisterAssemblyModules(typeof(ModulesBLL.CommandsAndQueriesModule).Assembly);
-    containerBuilder.RegisterAssemblyModules(typeof(ModulesDAL.UnitOfWorkModule).Assembly);
+    containerBuilder.RegisterAssemblyModules(typeof(Database.UnitOfWorkModule).Assembly);
     containerBuilder.RegisterModule<ModelMappingModule>();
     containerBuilder.RegisterMediatR(typeof(Program).Assembly);
 });

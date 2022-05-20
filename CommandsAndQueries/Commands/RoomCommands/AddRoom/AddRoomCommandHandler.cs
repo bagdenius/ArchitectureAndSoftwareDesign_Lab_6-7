@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using CommandsAndQueries.Exceptions;
+using Entities;
 using MediatR;
 using UnitOfWOrk.Abstract;
 using ViewModels.enums;
@@ -13,6 +14,9 @@ namespace CommandsAndQueries.Commands.RoomCommands.AddRoom
 
         public async Task<Guid> Handle(AddRoomCommand request, CancellationToken cancellationToken)
         {
+            var hotel = _unitOfWork.Hotels.Get(request.HotelId);
+            if(hotel == null)
+                throw new NotFoundException(nameof(Hotel), request.HotelId);
             var room = new Room
             {
                 Id = Guid.NewGuid(),
@@ -24,7 +28,8 @@ namespace CommandsAndQueries.Commands.RoomCommands.AddRoom
                 RoomCategory = request.RoomCategory,
                 ServicesAndAmenities = request.ServicesAndAmenities,
                 WindowsView = request.WindowsView,
-                BookingState = BookingState.Вільний.ToString()
+                BookingState = BookingState.Вільний.ToString(),
+                BookingDates = string.Empty
             };
             await _unitOfWork.Rooms.AddAsync(room, cancellationToken);
             await _unitOfWork.SaveAsync(cancellationToken);

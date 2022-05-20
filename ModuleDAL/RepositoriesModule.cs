@@ -3,7 +3,7 @@ using Entities;
 using Repositories;
 using Repositories.Abstract;
 
-namespace ModulesDAL
+namespace Database
 {
     public class RepositoriesModule : Module
     {

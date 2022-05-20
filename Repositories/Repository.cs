@@ -40,13 +40,15 @@ namespace Repositories
         public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken)
         {
             if (typeof(TEntity) == typeof(Hotel))
-                return await _dbSet.Include("Rooms").ToListAsync(cancellationToken);
-            return await _dbSet/*.AsNoTracking()*/.ToListAsync(cancellationToken);
+                return await _dbSet.AsNoTracking().Include("Rooms").ToListAsync(cancellationToken);
+            if (typeof(TEntity) == typeof(Customer))
+                return await _dbSet.AsNoTracking().Include("Room").ToListAsync(cancellationToken);
+            return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
         }
             
 
         // Unique methods
         public async Task<List<Room>> GetRoomsAsync(Guid hotelId, CancellationToken cancellationToken) =>
-            await _context.Rooms.Where(room => room.HotelId == hotelId).ToListAsync(cancellationToken);
+            await _context.Rooms.AsNoTracking().Where(room => room.HotelId == hotelId).ToListAsync(cancellationToken);
     }
 }

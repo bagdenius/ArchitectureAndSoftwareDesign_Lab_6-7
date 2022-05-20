@@ -14,7 +14,7 @@ namespace CommandsAndQueries.Commands.RoomCommands.UpdateRoom
         public async Task<Unit> Handle(UpdateRoomCommand request, CancellationToken cancellationToken)
         {
             var room = await _unitOfWork.Rooms.GetAsync(request.Id, cancellationToken);
-            if (room == null || room.Id != request.Id)
+            if (room == null)
                 throw new NotFoundException(nameof(Room), request.Id);
             room.Id = request.Id;
             room.Number = request.Number;

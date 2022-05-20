@@ -1,19 +1,19 @@
 ﻿using Autofac;
-using DAL_Modules;
-using Domains;
+using Domain;
+using ModulesDAL;
 using Services;
 using Services.Abstract;
 
-namespace BLL_Modules
+namespace ModulesBLL
 {
     public class ServiceModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<HotelsService>().As<IService<Hotel>>().SingleInstance();
-            builder.RegisterType<RoomsService>().As<IService<Room>>().SingleInstance();
-            builder.RegisterType<CustomersService>().As<IService<Customer>>().SingleInstance();
-            builder.RegisterModule<UoWModule>();
+            builder.RegisterType<HotelService>().As<IService<Hotel>>().SingleInstance();
+            builder.RegisterType<RoomService>().As<IService<Room>>().SingleInstance();
+            builder.RegisterType<CustomerService>().As<IService<Customer>>().SingleInstance();
+            builder.RegisterModule<UnitOfWorkModule>();
         }
     }
 }

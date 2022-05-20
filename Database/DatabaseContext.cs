@@ -11,9 +11,9 @@ namespace Database
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
-        public DbSet<HotelEntity> Hotels { get; set; }
-        public DbSet<RoomEntity> Rooms { get; set; }
-        public DbSet<CustomerEntity> Customers { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

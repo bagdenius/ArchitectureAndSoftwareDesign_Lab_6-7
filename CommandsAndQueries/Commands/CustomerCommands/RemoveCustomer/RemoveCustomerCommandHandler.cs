@@ -1,25 +1,23 @@
-﻿using AutoMapper;
-using CommandsAndQueries.Exceptions;
-using Domain;
+﻿using CommandsAndQueries.Exceptions;
+using Entities;
 using MediatR;
-using Services.Abstract;
+using UnitOfWOrk.Abstract;
 
 namespace CommandsAndQueries.ResumeCommands.RemoveResume
 {
     public class RemoveCustomerCommandHandler : IRequestHandler<RemoveCustomerCommand>
     {
-        private readonly IService<Customer> _service;
-        private readonly IMapper _mapper;
-        public RemoveCustomerCommandHandler(IService<Customer> service, IMapper mapper) =>
-            (_service, _mapper) = (service, mapper);
+        private readonly IUnitOfWork _unitOfWork;
+        public RemoveCustomerCommandHandler(IUnitOfWork unitOfWork) =>
+            _unitOfWork = unitOfWork;
 
         public async Task<Unit> Handle(RemoveCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customer = await _service.GetAsync(request.Id, cancellationToken);
+            var customer = await _unitOfWork.Customers.GetAsync(request.Id, cancellationToken);
             if (customer == null || customer.Id != request.Id)
                 throw new NotFoundException(nameof(Customer), request.Id);
-            _service.Remove(customer.Id);
-            await _service.SaveAsync(cancellationToken);
+            _unitOfWork.Customers.Remove(customer);
+            await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }
     }

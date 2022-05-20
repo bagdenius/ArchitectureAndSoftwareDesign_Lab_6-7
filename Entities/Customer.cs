@@ -2,7 +2,7 @@
 
 namespace Entities
 {
-    public class CustomerEntity
+    public class Customer
     {
         // Mapped properties
         public Guid Id { get; set; }
@@ -15,6 +15,6 @@ namespace Entities
         public string Phone { get; set; }
         public string Email { get; set; }
         public Guid RoomId { get; set; }
-        public RoomEntity Room { get; set; }
+        public Room Room { get; set; }
     }
 }

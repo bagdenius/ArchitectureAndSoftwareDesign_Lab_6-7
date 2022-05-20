@@ -11,12 +11,12 @@ namespace UnitOfWOrk
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _context;
-        public IRepository<CustomerEntity> Customers { get; }
-        public IRepository<HotelEntity> Hotels { get; }
-        public IRepository<RoomEntity> Rooms { get; }
+        public IRepository<Customer> Customers { get; }
+        public IRepository<Hotel> Hotels { get; }
+        public IRepository<Room> Rooms { get; }
 
-        public UnitOfWork(DatabaseContext context, IRepository<CustomerEntity> customers,
-            IRepository<HotelEntity> hotels, IRepository<RoomEntity> rooms) =>
+        public UnitOfWork(DatabaseContext context, IRepository<Customer> customers,
+            IRepository<Hotel> hotels, IRepository<Room> rooms) =>
             (_context, Customers, Hotels, Rooms) = (context, customers, hotels, rooms);
 
         public void Save() => _context.SaveChanges();

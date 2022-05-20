@@ -9,9 +9,9 @@ namespace ModulesDAL
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Repository<CustomerEntity>>().As<IRepository<CustomerEntity>>()/*.SingleInstance()*/;
-            builder.RegisterType<Repository<HotelEntity>>().As<IRepository<HotelEntity>>()/*.SingleInstance()*/;
-            builder.RegisterType<Repository<RoomEntity>>().As<IRepository<RoomEntity>>()/*.SingleInstance()*/;
+            builder.RegisterType<Repository<Customer>>().As<IRepository<Customer>>()/*.SingleInstance()*/;
+            builder.RegisterType<Repository<Hotel>>().As<IRepository<Hotel>>()/*.SingleInstance()*/;
+            builder.RegisterType<Repository<Room>>().As<IRepository<Room>>()/*.SingleInstance()*/;
         }
     }
 }

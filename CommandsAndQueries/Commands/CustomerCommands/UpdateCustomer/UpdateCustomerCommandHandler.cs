@@ -1,22 +1,19 @@
-﻿using AutoMapper;
-using CommandsAndQueries.Exceptions;
-using Domain;
+﻿using CommandsAndQueries.Exceptions;
+using Entities;
 using MediatR;
-using Services.Abstract;
-using ViewModels;
+using UnitOfWOrk.Abstract;
 
 namespace CommandsAndQueries.ResumeCommands.UpdateResume
 {
     public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand>
     {
-        private readonly IService<Customer> _service;
-        private readonly IMapper _mapper;
-        public UpdateCustomerCommandHandler(IService<Customer> service, IMapper mapper) =>
-            (_service, _mapper) = (service, mapper);
+        private readonly IUnitOfWork _unitOfWork;
+        public UpdateCustomerCommandHandler(IUnitOfWork unitOfWork) =>
+            _unitOfWork = unitOfWork;
 
         public async Task<Unit> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customer = _mapper.Map<CustomerVM>(await _service.GetAsync(request.Id, cancellationToken));
+            var customer = await _unitOfWork.Customers.GetAsync(request.Id, cancellationToken);
             if (customer == null || customer.Id != request.Id)
                 throw new NotFoundException(nameof(Customer), request.Id);
             customer.Id = request.Id;
@@ -26,10 +23,10 @@ namespace CommandsAndQueries.ResumeCommands.UpdateResume
             customer.Patronymic = request.Patronymic;
             customer.Gender = request.Gender;
             customer.Passport = request.Passport;
-            customer.BirthDate = request.BirthDate;
+            customer.BirthDate = (DateTime)request.BirthDate;
             customer.Phone = request.Phone;
             customer.Email = request.Email;
-            await _service.SaveAsync(cancellationToken);
+            await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }
     }

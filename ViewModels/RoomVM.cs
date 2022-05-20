@@ -19,8 +19,8 @@ namespace ViewModels
         // mapped properties
         public Guid Id { get; set; }
         public Guid HotelId { get; set; }
-        public HotelVM Hotel { get; set; }
-        public CustomerVM Customer { get; set; }
+        //public HotelVM Hotel { get; set; }
+        //public CustomerVM Customer { get; set; }
 
         public string Number
         {
@@ -72,31 +72,35 @@ namespace ViewModels
 
         public string BookingDates
         {
-            get => $"{bookingStartDate.Value.ToShortDateString()} - " +
+            get
+            {
+                if (bookingStartDate == null) return string.Empty;
+                return $"{bookingStartDate.Value.ToShortDateString()} - " +
                 $"{bookingEndDate.Value.ToShortDateString()}";
-        }
-
-        public DateTime? BookingStartDate
-        {
-            get
-            {
-                if (bookingStartDate != DateTime.MinValue) return bookingStartDate;
-                return null;
             }
-            set { if (bookingStartDate != value) { bookingStartDate = value; OnPropertyChanged(); } }
         }
 
-        public DateTime? BookingEndDate
-        {
-            get
-            {
-                if (bookingEndDate != DateTime.MinValue) return bookingEndDate;
-                return null;
-            }
-            set { if (bookingEndDate != value) { bookingEndDate = value; OnPropertyChanged(); } }
-        }
+        //public DateTime? BookingStartDate
+        //{
+        //    get
+        //    {
+        //        if (bookingStartDate != DateTime.MinValue) return bookingStartDate;
+        //        return null;
+        //    }
+        //    set { if (bookingStartDate != value) { bookingStartDate = value; OnPropertyChanged(); } }
+        //}
 
-        public string Info { get => ToString(); }
+        //public DateTime? BookingEndDate
+        //{
+        //    get
+        //    {
+        //        if (bookingEndDate != DateTime.MinValue) return bookingEndDate;
+        //        return null;
+        //    }
+        //    set { if (bookingEndDate != value) { bookingEndDate = value; OnPropertyChanged(); } }
+        //}
+
+        //public string Info { get => ToString(); }
 
         public override string ToString()
         {

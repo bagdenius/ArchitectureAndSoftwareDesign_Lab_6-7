@@ -1,34 +1,32 @@
-﻿using AutoMapper;
-using Domain;
+﻿using Entities;
 using MediatR;
-using Services.Abstract;
-using ViewModels;
+using UnitOfWOrk.Abstract;
 
 namespace CommandsAndQueries.ResumeCommands.CreateResume
 {
     public class AddCustomerCommandHandler : IRequestHandler<AddCustomerCommand, Guid>
     {
-        private readonly IService<Customer> _service;
-        private readonly IMapper _mapper;
-        public AddCustomerCommandHandler(IService<Customer> service, IMapper mapper) =>
-            (_service, _mapper) = (service, mapper);
+        private readonly IUnitOfWork _unitOfWork;
+        public AddCustomerCommandHandler(IUnitOfWork unitOfWork) =>
+            _unitOfWork = unitOfWork;
 
         public async Task<Guid> Handle(AddCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customer = new CustomerVM
+            var customer = new Customer
             {
                 Id = Guid.NewGuid(),
+                RoomId = request.RoomId,
                 Name = request.Name,
                 Surname = request.Surname,
                 Patronymic = request.Patronymic,
                 Gender = request.Gender,
                 Passport = request.Passport,
-                BirthDate = request.BirthDate,
+                BirthDate = (DateTime)request.BirthDate,
                 Phone = request.Phone,
                 Email = request.Email
             };
-            await _service.AddAsync(_mapper.Map<Customer>(customer), cancellationToken);
-            await _service.SaveAsync(cancellationToken);
+            await _unitOfWork.Customers.AddAsync(customer, cancellationToken);
+            await _unitOfWork.SaveAsync(cancellationToken);
             return customer.Id;
         }
     }

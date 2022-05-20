@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
-using Domain;
 using MediatR;
 using CommandsAndQueries.Exceptions;
-using Services.Abstract;
 using ViewModels;
+using UnitOfWOrk.Abstract;
+using Entities;
 
 namespace CommandsAndQueries.ResumeQueries.GetResume
 {
     public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, CustomerVM>
     {
-        private readonly IService<Customer> _service;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public GetCustomerQueryHandler(IService<Customer> service, IMapper mapper) =>
-            (_service, _mapper) = (service, mapper);
+        public GetCustomerQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) =>
+            (_unitOfWork, _mapper) = (unitOfWork, mapper);
 
         public async Task<CustomerVM> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _service.GetAsync(request.Id, cancellationToken);
+            var customer = await _unitOfWork.Customers.GetAsync(request.Id, cancellationToken);
             if (customer == null || customer.Id != request.Id)
                 throw new NotFoundException(nameof(Customer), request.Id);
             return _mapper.Map<CustomerVM>(customer);

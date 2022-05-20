@@ -4,13 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Database.EntityTypeConfigurations
 {
-    public class RoomConfiguration : IEntityTypeConfiguration<RoomEntity>
+    public class RoomConfiguration : IEntityTypeConfiguration<Room>
     {
-        public void Configure(EntityTypeBuilder<RoomEntity> builder)
+        public void Configure(EntityTypeBuilder<Room> builder)
         {
-            builder.HasOne(r => r.Customer)
-                .WithOne(c => c.Room)
-                .HasForeignKey<CustomerEntity>(c => c.RoomId);
+
         }
     }
 }

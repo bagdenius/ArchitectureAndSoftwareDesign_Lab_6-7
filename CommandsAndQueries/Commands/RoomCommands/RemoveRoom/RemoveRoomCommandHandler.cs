@@ -1,25 +1,23 @@
-﻿using AutoMapper;
-using CommandsAndQueries.Exceptions;
-using Domain;
+﻿using CommandsAndQueries.Exceptions;
+using Entities;
 using MediatR;
-using Services.Abstract;
+using UnitOfWOrk.Abstract;
 
 namespace CommandsAndQueries.Commands.RoomCommands.RemoveRoom
 {
     public class RemoveRoomCommandHandler : IRequestHandler<RemoveRoomCommand>
     {
-        private readonly IService<Room> _service;
-        private readonly IMapper _mapper;
-        public RemoveRoomCommandHandler(IService<Room> service, IMapper mapper) =>
-            (_service, _mapper) = (service, mapper);
+        private readonly IUnitOfWork _unitOfWork;
+        public RemoveRoomCommandHandler(IUnitOfWork unitOfWork) =>
+            _unitOfWork = unitOfWork;
 
         public async Task<Unit> Handle(RemoveRoomCommand request, CancellationToken cancellationToken)
         {
-            var room = await _service.GetAsync(request.Id, cancellationToken);
+            var room = await _unitOfWork.Rooms.GetAsync(request.Id, cancellationToken);
             if (room == null || room.Id != request.Id)
                 throw new NotFoundException(nameof(Room), request.Id);
-            _service.Remove(room.Id);
-            await _service.SaveAsync(cancellationToken);
+            _unitOfWork.Rooms.Remove(room);
+            await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }
     }

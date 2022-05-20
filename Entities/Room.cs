@@ -1,6 +1,6 @@
 ﻿namespace Entities
 {
-    public class RoomEntity
+    public class Room
     {
         public Guid Id { get; set; }
         public string Number { get; set; }
@@ -14,7 +14,7 @@
         public DateTime? BookingStartDate { get; set; }
         public DateTime? BookingEndDate { get; set; }
         public Guid HotelId { get; set; }
-        public HotelEntity Hotel { get; set; }
-        public CustomerEntity Customer { get; set; }
+        //public Hotel Hotel { get; set; }
+        //public Customer Customer { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,5 +17,6 @@ namespace Repositories.Abstract
         Task<TEntity> GetAsync(Guid id, CancellationToken cancellationToken);
         List<TEntity> GetAll();
         Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken);
+        Task<List<Room>> GetRoomsAsync(Guid hotelId, CancellationToken cancellationToken);
     }
 }

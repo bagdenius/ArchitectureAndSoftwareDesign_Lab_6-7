@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
-using Domain;
 using Entities;
 using ViewModels;
 
-namespace Mappers
+namespace EntityViewModelMappers
 {
     public class CustomerMapper : Profile
     {
         public CustomerMapper()
         {
-            CreateMap<Customer, CustomerEntity>().ReverseMap();
             CreateMap<Customer, CustomerVM>().ReverseMap();
         }
     }

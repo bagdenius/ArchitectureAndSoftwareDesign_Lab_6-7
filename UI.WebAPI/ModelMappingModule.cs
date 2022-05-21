@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using AutoMapper;
 using EntityViewModelMappers;
-using ModulesBLL;
 using UI.WebAPI.ModelCommandMappers;
 
 namespace UI.WebAPI

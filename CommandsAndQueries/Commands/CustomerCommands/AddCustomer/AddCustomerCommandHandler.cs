@@ -15,7 +15,7 @@ namespace CommandsAndQueries.ResumeCommands.CreateResume
         public async Task<Guid> Handle(AddCustomerCommand request, CancellationToken cancellationToken)
         {
             var room = _unitOfWork.Rooms.Get(request.RoomId);
-            if(room == null)
+            if (room == null)
                 throw new NotFoundException(nameof(Room), request.RoomId);
             var customer = new Customer
             {

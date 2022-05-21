@@ -45,7 +45,7 @@ namespace Repositories
                 return await _dbSet.AsNoTracking().Include("Room").ToListAsync(cancellationToken);
             return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
         }
-            
+
 
         // Unique methods
         public async Task<List<Room>> GetRoomsAsync(Guid hotelId, CancellationToken cancellationToken) =>

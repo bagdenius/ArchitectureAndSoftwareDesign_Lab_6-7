@@ -15,7 +15,7 @@ namespace CommandsAndQueries.Commands.RoomCommands.AddRoom
         public async Task<Guid> Handle(AddRoomCommand request, CancellationToken cancellationToken)
         {
             var hotel = _unitOfWork.Hotels.Get(request.HotelId);
-            if(hotel == null)
+            if (hotel == null)
                 throw new NotFoundException(nameof(Hotel), request.HotelId);
             var room = new Room
             {

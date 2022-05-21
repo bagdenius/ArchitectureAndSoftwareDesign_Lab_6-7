@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using MediatR;
 using CommandsAndQueries.Exceptions;
-using ViewModels;
-using UnitOfWOrk.Abstract;
 using Entities;
+using MediatR;
+using UnitOfWOrk.Abstract;
+using ViewModels;
 
-namespace CommandsAndQueries.ResumeQueries.GetResume
+namespace CommandsAndQueries.ResumeQueries.GetCustomer
 {
     public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, CustomerVM>
     {

@@ -13,6 +13,9 @@ namespace CommandsAndQueries.ResumeCommands.UpdateResume
 
         public async Task<Unit> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
+            var room = await _unitOfWork.Rooms.GetAsync(request.RoomId, cancellationToken);
+            if (room == null)
+                throw new NotFoundException(nameof(Room), request.RoomId);
             var customer = await _unitOfWork.Customers.GetAsync(request.Id, cancellationToken);
             if (customer == null)
                 throw new NotFoundException(nameof(Customer), request.Id);
@@ -26,6 +29,9 @@ namespace CommandsAndQueries.ResumeCommands.UpdateResume
             customer.BirthDate = (DateTime)request.BirthDate;
             customer.Phone = request.Phone;
             customer.Email = request.Email;
+            if (request.BookingStartDate >= DateTime.Today)
+                room.BookingDates = $"{request.BookingStartDate.ToShortDateString()} - " +
+                    $"{request.BookingEndDate.ToShortDateString()}";
             await _unitOfWork.SaveAsync(cancellationToken);
             return Unit.Value;
         }

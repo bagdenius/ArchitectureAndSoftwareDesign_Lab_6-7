@@ -1,8 +1,5 @@
 ﻿using Entities;
 using Repositories.Abstract;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnitOfWOrk.Abstract
 {

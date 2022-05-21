@@ -3,7 +3,7 @@ using MediatR;
 using UnitOfWOrk.Abstract;
 using ViewModels;
 
-namespace CommandsAndQueries.ResumeQueries.GetResumeList
+namespace CommandsAndQueries.ResumeQueries.GetCustomerList
 {
     public class GetCustomerListQueryHandler : IRequestHandler<GetCustomerListQuery, List<CustomerVM>>
     {

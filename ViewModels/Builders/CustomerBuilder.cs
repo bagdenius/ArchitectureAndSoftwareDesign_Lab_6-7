@@ -1,5 +1,5 @@
-﻿using ViewModels.enums;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using ViewModels.enums;
 
 namespace ViewModels.Builders
 {

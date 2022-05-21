@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using CommandsAndQueries.ResumeCommands.CreateResume;
-using CommandsAndQueries.ResumeQueries.GetResume;
+using CommandsAndQueries.ResumeQueries.GetCustomer;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using System.Reflection;
 

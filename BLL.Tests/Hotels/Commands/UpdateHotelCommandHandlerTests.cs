@@ -1,14 +1,11 @@
 ﻿using BLL.Tests.Common;
-using Xunit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommandsAndQueries.Commands.HotelCommands.UpdateHotel;
-using System.Threading;
-using Microsoft.EntityFrameworkCore;
 using CommandsAndQueries.Exceptions;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace BLL.Tests.Hotels.Commands
 {

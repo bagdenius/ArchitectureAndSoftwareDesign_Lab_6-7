@@ -3,7 +3,6 @@ using CommandsAndQueries.Commands.HotelCommands.RemoveHotel;
 using CommandsAndQueries.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -38,8 +37,8 @@ namespace BLL.Tests.Hotels.Commands
             // Act
             // Assert
             await Assert.ThrowsAsync<NotFoundException>(async () =>
-            await handler.Handle(new RemoveHotelCommand { 
-                Id = Guid.NewGuid() }, CancellationToken.None));
+            await handler.Handle(new RemoveHotelCommand
+            { Id = Guid.NewGuid() }, CancellationToken.None));
         }
     }
 }

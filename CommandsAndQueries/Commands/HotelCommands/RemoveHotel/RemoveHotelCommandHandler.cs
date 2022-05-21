@@ -1,7 +1,7 @@
-﻿using MediatR;
-using CommandsAndQueries.Exceptions;
-using UnitOfWOrk.Abstract;
+﻿using CommandsAndQueries.Exceptions;
 using Entities;
+using MediatR;
+using UnitOfWOrk.Abstract;
 
 namespace CommandsAndQueries.Commands.HotelCommands.RemoveHotel
 {

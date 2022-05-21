@@ -126,14 +126,14 @@ namespace BLL.Tests.Common
                 {
                     Id = Guid.Parse("DBB62C43-1EAF-46A5-B2B9-0658A5668EE7"),
                     RoomId = RoomIdForUpdate,
-                    Name="Name1",
-                    Surname="Surname1",
-                    Patronymic="Patronymic1",
-                    Passport="Passport1",
-                    Gender="Gender1",
-                    BirthDate=DateTime.Today,
-                    Phone= "Phone1",
-                    Email="Email1"
+                    Name = "Name1",
+                    Surname = "Surname1",
+                    Patronymic = "Patronymic1",
+                    Passport = "Passport1",
+                    Gender = "Gender1",
+                    BirthDate = DateTime.Today,
+                    Phone = "Phone1",
+                    Email = "Email1"
                 },
                 new Customer
                 {

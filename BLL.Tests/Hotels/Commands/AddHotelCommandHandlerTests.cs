@@ -34,8 +34,8 @@ namespace BLL.Tests.Hotels.Commands
             // Assert
             Assert.NotNull(
                 await Context.Hotels.SingleOrDefaultAsync(hotel =>
-                hotel.Id == hotelId && hotel.Name == Name && 
-                hotel.Stars == Stars && hotel.NumberOfFloors == NumberOfFloors && 
+                hotel.Id == hotelId && hotel.Name == Name &&
+                hotel.Stars == Stars && hotel.NumberOfFloors == NumberOfFloors &&
                 hotel.Address == Address && hotel.Phone == Phone));
         }
     }

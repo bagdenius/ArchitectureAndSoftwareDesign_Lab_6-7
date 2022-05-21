@@ -2,8 +2,8 @@
 using CommandsAndQueries.ResumeCommands.CreateResume;
 using CommandsAndQueries.ResumeCommands.RemoveResume;
 using CommandsAndQueries.ResumeCommands.UpdateResume;
-using CommandsAndQueries.ResumeQueries.GetResume;
-using CommandsAndQueries.ResumeQueries.GetResumeList;
+using CommandsAndQueries.ResumeQueries.GetCustomer;
+using CommandsAndQueries.ResumeQueries.GetCustomerList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using UI.WebAPI.Models.Customer;

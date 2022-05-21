@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using BLL.Tests.Common;
 using CommandsAndQueries.Queries.HotelQueries.GetHotelList;
-using Database;
-using Entities;
-using Repositories.Abstract;
 using Shouldly;
 using System.Collections.Generic;
 using System.Threading;

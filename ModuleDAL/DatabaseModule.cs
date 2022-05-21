@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Database;
 
 namespace Database
 {

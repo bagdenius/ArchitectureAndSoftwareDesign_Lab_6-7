@@ -34,11 +34,11 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
 }
 
-app.UseSwagger();
-app.UseSwaggerUI();
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");

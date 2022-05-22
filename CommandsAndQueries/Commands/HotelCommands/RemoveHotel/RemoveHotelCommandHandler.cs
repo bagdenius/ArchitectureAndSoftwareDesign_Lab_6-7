@@ -10,7 +10,7 @@ namespace CommandsAndQueries.Commands.HotelCommands.RemoveHotel
         private readonly IUnitOfWork _unitOfWork;
         public RemoveHotelCommandHandler(IUnitOfWork unitOfWork) =>
             _unitOfWork = unitOfWork;
-
+        
         public async Task<Unit> Handle(RemoveHotelCommand request, CancellationToken cancellationToken)
         {
             var hotel = await _unitOfWork.Hotels.GetAsync(request.Id, cancellationToken);

@@ -28,7 +28,6 @@ namespace UI.WebAPI
             })
             .As<IMapper>()
             .InstancePerLifetimeScope();
-            //builder.RegisterModule<VmMappingModule>();
         }
     }
 }

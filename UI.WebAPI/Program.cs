@@ -7,9 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
-//builder.Services.AddFluentValidation(fv =>
-//    fv.RegisterValidatorsFromAssembly(typeof(Program).Assembly));
-
 builder.Services.AddSwaggerGen();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
